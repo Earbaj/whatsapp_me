@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_me/extensions/custom_theme_extensions.dart';
+
+import '../utils/colors.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -6,7 +9,6 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF111B21),
       body: Center(
         child: Column(
           children: [
@@ -20,7 +22,7 @@ class SplashScreen extends StatelessWidget {
                   ),
                   child: Image.asset(
                     'assets/images/circle.png',
-                    color: const Color(0xFF00A884),
+                    color: context.theme.circleImageColor,
                   ),
                 ),
               ),
@@ -41,19 +43,19 @@ class SplashScreen extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                   child: RichText(
                     textAlign: TextAlign.center,
-                    text: const TextSpan(
+                    text: TextSpan(
                       text: 'Read our ',
-                      style: TextStyle(height: 1.5, color: Color(0xFF8696A0)),
+                      style: TextStyle(height: 1.5, color: context.theme.greyColor),
                       children: [
                         TextSpan(
                           text: 'Privacy Policy. ',
-                          style: TextStyle(color: Color(0xFF53BDEB)),
+                          style: TextStyle(color: context.theme.blueColor),
                         ),
                         TextSpan(
                             text: 'Tap "Agree and continue" to accept the '),
                         TextSpan(
                           text: 'Terms of Services.',
-                          style: TextStyle(color: Color(0xFF53BDEB)),
+                          style: TextStyle(color: context.theme.blueColor),
                         ),
                       ],
                     ),
@@ -65,7 +67,7 @@ class SplashScreen extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF00A884),
+                        backgroundColor: Coloors.greenDark,
                         foregroundColor: const Color(0xFF111B21),
                         splashFactory: NoSplash.splashFactory,
                         elevation: 0,
@@ -75,13 +77,14 @@ class SplashScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 50),
                 Material(
-                  color: const Color(0xFF182229),
+                  //color: const Color(0xFF182229),
+                  color: context.theme.langBgColor,
                   borderRadius: BorderRadius.circular(20),
                   child: InkWell(
                     onTap: () {},
                     borderRadius: BorderRadius.circular(20),
                     splashFactory: NoSplash.splashFactory,
-                    highlightColor: const Color(0xFF09141A),
+                    highlightColor: context.theme.langHightlightColor,
                     child: const Padding(
                       padding:  EdgeInsets.symmetric(
                         horizontal: 16,
@@ -92,17 +95,17 @@ class SplashScreen extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.language,
-                            color: Color(0xFF00A884),
+                            color: Coloors.greenDark,
                           ),
                           SizedBox(width: 10),
                           Text(
                             'English',
-                            style: TextStyle(color: Color(0xFF00A884)),
+                            style: TextStyle(color: Coloors.greenDark),
                           ),
                           SizedBox(width: 10),
                           Icon(
                             Icons.keyboard_arrow_down,
-                            color: Color(0xFF00A884),
+                            color: Coloors.greenDark,
                           ),
                         ],
                       ),
