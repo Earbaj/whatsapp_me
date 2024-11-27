@@ -6,6 +6,84 @@ import '../utils/colors.dart';
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
+  showBottomSheet(context){
+    return showModalBottomSheet(
+        context: context,
+        builder: (context){
+          return Padding(
+              padding: EdgeInsets.symmetric(vertical: 10),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  height: 4,
+                    width: 30,
+                  decoration: BoxDecoration(
+                    color: context.theme.greyColor!.withOpacity(0.4),
+                    borderRadius: BorderRadius.circular(5)
+                  ),
+                ),
+                SizedBox(height: 20,),
+                Row(
+                  children: [
+                    SizedBox(width: 20,),
+                    IconButton(
+                        onPressed: (){
+                          Navigator.pop(context);
+                        },
+                        splashColor: Colors.transparent,
+                        splashRadius: 22,
+                        iconSize: 22,
+                        padding: EdgeInsets.zero,
+                        constraints: BoxConstraints(minWidth: 40),
+                        icon: Icon(Icons.close_outlined,color: Coloors.greenDark,)
+                    ),
+                    SizedBox(width: 10,),
+                    Text("App Language",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500),)
+                  ],
+                ),
+                SizedBox(height: 10,),
+                Divider(
+                  color: context.theme.greyColor!.withOpacity(0.3),
+                  thickness: .5,
+                ),
+                RadioListTile(
+                    value: true,
+                    groupValue: true,
+                    onChanged: (value){},
+                  activeColor: Coloors.greenDark,
+                  title: Text("English"),
+                  subtitle: Text(
+                    "phone's language",
+                    style: TextStyle(
+                      color: context.theme.greyColor,
+                    ),
+                  ),
+                ),
+                RadioListTile(
+                  value: true,
+                  groupValue: false,
+                  onChanged: (value) {},
+                  activeColor: Coloors.greenDark,
+                  title: const Text('አማርኛ'),
+                  subtitle: Text(
+                    "Amharic",
+                    style: TextStyle(
+                      color: context.theme.greyColor,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,7 +159,7 @@ class SplashScreen extends StatelessWidget {
                   color: context.theme.langBgColor,
                   borderRadius: BorderRadius.circular(20),
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () => showBottomSheet(context),
                     borderRadius: BorderRadius.circular(20),
                     splashFactory: NoSplash.splashFactory,
                     highlightColor: context.theme.langHightlightColor,
